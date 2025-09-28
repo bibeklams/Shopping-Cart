@@ -17,6 +17,14 @@ Users can:
 - Quantity tracking in cart
 - Total price calculation
 
+## Screenshots
+
+**Product Page:**
+![Product Page](https://github.com/bibeklams/Shopping-Cart/raw/main/products.png)
+
+**Cart Page:**
+![Cart Page](https://github.com/bibeklams/Shopping-Cart/raw/main/cart.png)
+
 ## Installation
 
 1. Clone the repository:
