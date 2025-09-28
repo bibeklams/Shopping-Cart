@@ -20,10 +20,13 @@ Users can:
 ## Screenshots
 
 **Product Page:**
-![Product Page](https://github.com/bibeklams/Shopping-Cart/raw/main/products.png)
+![Product Page](<img width="1916" height="912" alt="product" src="https://github.com/user-attachments/assets/21dd5ab1-e6d5-45f7-91c3-986f838dd07d" />)
+
+**Add-product:**
+![Add Product Page](<img width="1777" height="897" alt="add-product" src="https://github.com/user-attachments/assets/5304c3ea-638f-4093-98af-e59f5ab4ae0c" />
 
 **Cart Page:**
-![Cart Page](https://github.com/bibeklams/Shopping-Cart/raw/main/cart.png)
+![Cart Page](<img width="1636" height="883" alt="cart" src="https://github.com/user-attachments/assets/46877dac-6b28-49e0-a152-0dd5ca5a606f" />)
 
 ## Installation
 
