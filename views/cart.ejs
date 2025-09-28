@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - ShopNow</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header and Navigation */
+    header {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      flex: 1;
+    }
+    
+    .page-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+      font-weight: 600;
+      font-size: 2.2rem;
+    }
+    
+    /* Cart Styles */
+    .cart-container {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    
+    /* Table Styles */
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .cart-table thead {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+    }
+    
+    .cart-table th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .cart-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .cart-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .cart-table tbody tr:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .product-name {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    
+    .price, .subtotal {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    
+    .quantity {
+      display: inline-block;
+      background: #f1f3f4;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 600;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    /* Remove Button */
+    .remove-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .remove-btn:hover {
+      background: #c0392b;
+    }
+    
+    /* Empty Cart */
+    .empty-cart {
+      text-align: center;
+      padding: 3rem;
+    }
+    
+    .empty-cart h2 {
+      color: #7f8c8d;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .empty-cart-icon {
+      font-size: 4rem;
+      color: #bdc3c7;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Cart Summary */
+    .cart-summary {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .total-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    
+    .total-label {
+      font-weight: 600;
+      color: #7f8c8d;
+    }
+    
+    /* Continue Shopping Link */
+    .continue-shopping {
+      display: inline-block;
+      margin-top: 2rem;
+      color: #6a11cb;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+    
+    .continue-shopping:hover {
+      color: #2575fc;
+      background-color: rgba(106, 17, 203, 0.1);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      .cart-table {
+        display: block;
+        overflow-x: auto;
+      }
+      
+      .cart-summary {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 1.8rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .nav-links a {
+        text-align: center;
+        width: 100%;
+      }
+      
+      .cart-table th,
+      .cart-table td {
+        padding: 0.75rem 0.5rem;
+      }
+      
+      .remove-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">ShopNow</div>
+      <div class="nav-links">
+        <a href="/">View Products</a>
+        <a href="/add-product">Add Product</a>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+    <h1 class="page-title">Your Cart Details</h1>
+    
+    <% if(cart.length > 0) { %>
+      <div class="cart-container">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price (Rs)</th>
+              <th>Quantity</th>
+              <th>Subtotal (Rs)</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cart.forEach(p => { %>
+              <tr>
+                <td class="product-name"><%= p.name %></td>
+                <td class="price">Rs <%= p.price %></td>
+                <td><span class="quantity"><%= p.qty %></span></td>
+                <td class="subtotal">Rs <%= p.price * p.qty %></td>
+                <td>
+                  <form action="/remove/<%= p._id %>" method="post" style="display:inline;">
+                    <button class="remove-btn" type="submit">Remove One</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        
+        <div class="cart-summary">
+          <div>
+            <span class="total-label">Total Price: </span>
+            <span class="total-price">Rs <%= total %></span>
+          </div>
+        </div>
+      </div>
+    <% } else { %>
+      <div class="cart-container">
+        <div class="empty-cart">
+          <div class="empty-cart-icon">🛒</div>
+          <h2>Your cart is empty</h2>
+          <p>Add some products to your cart to see them here.</p>
+        </div>
+      </div>
+    <% } %>
+    
+    <p>
+      <a href="/" class="continue-shopping">← Continue Shopping</a>
+    </p>
+  </main>
+</body>
+</html>
